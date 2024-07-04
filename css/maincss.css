@@ -13,6 +13,16 @@
   line-height: 65px !important;
 }
 
+.self-style {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Add transition to transform */
+}
+
+.self-style:hover {
+  border: 1px solid;
+  box-shadow: 15px 20px 5px #c53903;
+  transform: scale(1.01); /* Add zoom effect */
+}
+
 @media only screen and (max-width: 756px){
   .line-height-section {
     line-height: 45px !important;

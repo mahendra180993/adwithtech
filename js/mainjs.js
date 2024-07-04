@@ -67,3 +67,48 @@ document.getElementById('cancelIcon').addEventListener('click', function() {
 document.getElementById('scrollTopButton').addEventListener('click', function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
+//target count js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll('.counter');
+  const duration = 1000; // Duration in milliseconds
+
+  const countUp = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    const increment = target / (duration / 10); // Calculate the increment based on duration
+    let current = 80;
+
+    const updateCount = () => {
+      current += increment;
+      if (current < target) {
+        counter.innerText = Math.ceil(current);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target + '+';
+      }
+    };
+    updateCount();
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 1.0 });
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+});
+
+// scroll to form
+
+function scrollToForm() {
+  const enquiryForm = document.getElementById('enquiryForm');
+  enquiryForm.scrollIntoView({ behavior: 'smooth' });
+}
