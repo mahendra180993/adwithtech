@@ -1,0 +1,22 @@
+.container{
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+  max-width: 1320px;
+}
+/* Cursor */
+.txt-type > .txt {
+  border-right: 0.2rem solid #777;
+}
+
+.line-height-section {
+  line-height: 65px !important;
+}
+
+@media only screen and (max-width: 756px){
+  .line-height-section {
+    line-height: 45px !important;
+  }
+}
+
+
