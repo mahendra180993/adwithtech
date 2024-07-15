@@ -112,3 +112,33 @@ function scrollToForm() {
   const enquiryForm = document.getElementById('enquiryForm');
   enquiryForm.scrollIntoView({ behavior: 'smooth' });
 }
+
+// view more  & view less
+
+document.addEventListener("DOMContentLoaded", function() {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+      const contentElement = card.querySelector(".content");
+      const toggleButton = card.querySelector(".toggleButton");
+      const fullText = contentElement.innerText;
+      const truncatedText = fullText.substring(0, 350);
+
+      let isTruncated = true;
+
+      function toggleContent() {
+          if (isTruncated) {
+              contentElement.innerText = fullText;
+              toggleButton.innerText = "View Less";
+          } else {
+              contentElement.innerText = truncatedText + "...";
+              toggleButton.innerText = "View More";
+          }
+          isTruncated = !isTruncated;
+      }
+
+      contentElement.innerText = truncatedText + "...";
+      toggleButton.innerText = "View More";
+      toggleButton.onclick = toggleContent;
+  });
+});
